@@ -7,11 +7,11 @@ int main(){
 	
       
    
-   vector<string> keywords{"auto","double","int","struct","break","else","long",
+   vector<string>keyword{"auto","double","int","struct","break","else","long",
       "switch","case","enum","register","typedef","char",
       "extern","return","union","const","float","short",
       "unsigned","continue","for","signed","void","default",
-      "goto","sizeof","voltile","do","if","static","while",};
+      "goto","sizeof","voltile","do","if","static","while"};
 
 	string s;
 	string line;
@@ -22,13 +22,27 @@ int main(){
 		
 		s+=line;
 	}
-	for(const auto& keyword : keywords)
-    {
-        auto pos = s.find(keyword);
-
-        cout << keyword
-            << " [" << (pos == string::npos ? " not found" : " found") << "]\n";   
+	string temp="";
+for(int i=0;i<=s.length();i++){
+    
+    if(s[i]!=' '&&i<s.length()){
+        temp+=s[i];
+      
     }
-	
+    else{
+    if(find(keyword.begin(),keyword.end(),temp)!=keyword.end()){
+        res++;}
+    temp="";
+            
+    }
+    if(i==s.length()){
+        if(find(keyword.begin(),keyword.end(),temp)!=keyword.end()){
+            
+            res++;
+    }
+}
+}
+
+    cout<<"Total keywords are:"<<res<<endl;
 return 0;
 }
